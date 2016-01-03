@@ -96,6 +96,14 @@ public class IndexableListView extends ListView {
 	}
 
 	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		if(mScroller.contains(ev.getX(), ev.getY()))
+			return true;
+		
+		return super.onInterceptTouchEvent(ev);
+	}
+
+	@Override
 	public void setAdapter(ListAdapter adapter) {
 		super.setAdapter(adapter);
 		if (mScroller != null)
